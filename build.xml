@@ -36,7 +36,7 @@
 	<!-- Target directory to print the instrumented source code (isc) as AspectJ aspects -->
 	<property name="dest.dir.isc"              value="isc" />
 	<property name="crossref.dir"              value="crossref" />
-	<property name="main.class"                value="chess.MyFirstJML" />
+	<property name="main.class"                value="chess.Main" />
 	<property name="app.lib"                   value="lib" />
 	<property name="aspectjml.lib"             value="aspectjml-lib" />
 	<!-- NOTE: 'aspectjml.lib' MUST INCLUDE ASPECTJ WEAVERS, AJC AND ABC -->
