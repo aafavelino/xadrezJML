@@ -15,9 +15,9 @@ public abstract class Piece implements Cloneable{
 
 	//Member Variables
 	private int color;
-	private String id=null;
-	private String path;
-	protected ArrayList<Cell> possiblemoves = new ArrayList<Cell>();  //Protected (access from child classes)
+	private /*@ spec_public nullable @*/  String id=null;
+	private  /*@ spec_public nullable @*/  String path;
+	public /*@ nullable @*/ ArrayList<Cell> possiblemoves = new ArrayList<Cell>();  //Protected (access from child classes)
 	public abstract ArrayList<Cell> move(Cell pos[][],int x,int y);  //Abstract Function. Must be overridden
 	
 	//Id Setter

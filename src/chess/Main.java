@@ -33,12 +33,12 @@ public class Main extends JFrame implements MouseListener
 	//Variable Declaration
 	private static final int Height=700;
 	private static final int Width=1110;
-	private static Rook wr01,wr02,br01,br02;
-	private static Knight wk01,wk02,bk01,bk02;
-	private static Bishop wb01,wb02,bb01,bb02;
-	private static Pawn wp[],bp[];
-	private static Queen wq,bq;
-	private static King wk,bk;
+	private static /*@ spec_public nullable @*/ Rook wr01,wr02,br01,br02;
+	private static /*@ spec_public nullable @*/ Knight wk01,wk02,bk01,bk02;
+	private static /*@ spec_public nullable @*/ Bishop wb01,wb02,bb01,bb02;
+	private static /*@ spec_public nullable @*/ Pawn wp[],bp[];
+	private static /*@ spec_public nullable @*/ Queen wq,bq;
+	private static /*@ spec_public nullable @*/ King wk,bk;
 	private Cell c,previous;
 	private int chance=0;
 	private Cell boardState[][];
@@ -52,9 +52,9 @@ public class Main extends JFrame implements MouseListener
 	private JPanel controlPanel,WhitePlayer,BlackPlayer,temp,displayTime,showPlayer,time;
 	private JSplitPane split;
 	private JLabel label,mov;
-	private static JLabel CHNC;
+	private static /*@ spec_public nullable @*/ JLabel CHNC;
 	private Time timer;
-	public static Main Mainboard;
+	public static /*@ nullable @*/ Main Mainboard;
 	private boolean selected=false,end=false;
 	private Container content;
 	private ArrayList<Player> wplayer,bplayer;
@@ -62,7 +62,7 @@ public class Main extends JFrame implements MouseListener
 	private ArrayList<String> Bnames=new ArrayList<String>();
 	private JComboBox<String> wcombo,bcombo;
 	private String wname=null,bname=null,winner=null;
-	static String move;
+	static /*@ spec_public nullable @*/ String move;
 	private Player tempPlayer;
 	private JScrollPane wscroll,bscroll;
 	private String[] WNames={},BNames={};
