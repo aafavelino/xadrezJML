@@ -15,8 +15,8 @@ public class Cell extends JPanel implements Cloneable{
 	//Member Variables
 	private static final long serialVersionUID = 1L;
 	private boolean ispossibledestination;
-	private JLabel content;
-	private Piece piece;
+	private /*@ spec_public nullable @*/ JLabel content;
+	private /*@ spec_public nullable @*/Piece piece;
 	int x,y;                             //is public because this is to be accessed by all the other class
 	private boolean isSelected=false;
 	private boolean ischeck=false;
