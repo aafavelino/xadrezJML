@@ -14,10 +14,10 @@ import chess.Cell;
 public abstract class Piece implements Cloneable{
 
 	//Member Variables
-	private int color;
-	private /*@ spec_public nullable @*/  String id=null;
-	private  /*@ spec_public nullable @*/  String path;
-	public /*@ nullable @*/ ArrayList<Cell> possiblemoves = new ArrayList<Cell>();  //Protected (access from child classes)
+	private /*@ spec_public @*/ int color;
+	private /*@ spec_public nullable @*/ String id=null;
+	private /*@ spec_public nullable @*/ String path;
+	protected /*@ spec_public nullable @*/ ArrayList<Cell> possiblemoves = new ArrayList<Cell>();  //Protected (access from child classes)
 	public abstract ArrayList<Cell> move(Cell pos[][],int x,int y);  //Abstract Function. Must be overridden
 	
 	//Id Setter

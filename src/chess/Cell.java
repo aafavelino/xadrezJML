@@ -15,14 +15,14 @@ public class Cell extends JPanel implements Cloneable{
 	//Member Variables
 	private static final long serialVersionUID = 1L;
 	private boolean ispossibledestination;
-	private /*@ spec_public nullable @*/ JLabel content;
-	private /*@ spec_public nullable @*/Piece piece;
+	private  /*@ spec_public nullable @*/ JLabel content;
+	private  /*@ spec_public nullable @*/ Piece piece;
 	int x,y;                             //is public because this is to be accessed by all the other class
 	private boolean isSelected=false;
 	private boolean ischeck=false;
 	
 	//Constructors
-	public Cell(int x,int y,Piece p)
+	public Cell(int x,int y, /*@ nullable @*/  Piece p)
 	{		
 		this.x=x;
 		this.y=y;
@@ -60,7 +60,7 @@ public class Cell extends JPanel implements Cloneable{
 	public void setPiece(Piece p)    //Function to inflate a cell with a piece
 	{
 		piece=p;
-		ImageIcon img=new javax.swing.ImageIcon(this.getClass().getResource(p.getPath()));
+		ImageIcon img=new javax.swing.ImageIcon(p.getPath());
 		content=new JLabel(img);
 		this.add(content);
 	}
