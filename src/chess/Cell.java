@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class Cell extends JPanel implements Cloneable{
 	
-	/* public invariant x >= 0 && x < 8 && y >= 0 && y < 8 @*/
+	/*public invariant x >= 0 && x < 8 && y >= 0 && y < 8 */
 	
 	//Member Variables
 	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
@@ -97,12 +97,12 @@ public class Cell extends JPanel implements Cloneable{
 	}	
 
 	//@  ensures \result == piece;
-	public /*@ pure @*/ Piece getpiece()    //Function to access piece of a particular cell
+	public /*@ pure nullable @*/ Piece getpiece()    //Function to access piece of a particular cell
 	{
 		return this.piece;
 	}
 
-	/*@ requires piece != null;
+	/*@ 
 	 @  assignable isSelected;
 	 @  ensures isSelected == true;
 	 @*/
@@ -118,7 +118,7 @@ public class Cell extends JPanel implements Cloneable{
 		return this.isSelected;
 	}
 	
-	/*@ requires piece != null;
+	/*@ 
 	 @  assignable isSelected;
 	 @  ensures isSelected == false;
 	 @*/
@@ -127,8 +127,10 @@ public class Cell extends JPanel implements Cloneable{
 		this.setBorder(null);
 		this.isSelected=false;
 	}
+
 	
-	/*@ requires piece != null;
+	
+	/*@ 
 	 @  assignable ispossibledestination;
 	 @  ensures ispossibledestination == true;
 	 @*/
@@ -138,7 +140,7 @@ public class Cell extends JPanel implements Cloneable{
 		this.ispossibledestination=true;
 	}
 	
-	/*@ requires piece != null;
+	/*@ 
 	 @  assignable ispossibledestination;
 	 @  ensures ispossibledestination == false;
 	 @*/

@@ -22,10 +22,10 @@ import javax.swing.JOptionPane;
  */
 public class Player implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
-	private String name;
-	private Integer gamesplayed;
-	private Integer gameswon;
+	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
+	private /*@ spec_public nullable @*/ String name;
+	private /*@ spec_public nullable @*/ Integer gamesplayed;
+	private /*@ spec_public nullable @*/ Integer gameswon;
 	
 	//Constructor
 	public Player(String name)

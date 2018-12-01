@@ -33,14 +33,15 @@ public class Main extends JFrame implements MouseListener
 	private static final long serialVersionUID = 1L;
 	
 	//Variable Declaration
+	public /*@ non_null @*/static final  String caminho_diretorio = System.getProperty("user.dir") + "/src/chess/";
 	private static final int Height=700;
 	private static final int Width=1110;
-	private static /*@ spec_public nullable @*/ Rook wr01,wr02,br01,br02;
-	private static /*@ spec_public nullable @*/ Knight wk01,wk02,bk01,bk02;
-	private static /*@ spec_public nullable @*/ Bishop wb01,wb02,bb01,bb02;
-	private static /*@ spec_public nullable @*/ Pawn wp[],bp[];
-	private static /*@ spec_public nullable @*/ Queen wq,bq;
-	private static /*@ spec_public nullable @*/ King wk,bk;
+	private /*@ spec_public nullable @*/ static  Rook wr01,wr02,br01,br02;
+	private /*@ spec_public nullable @*/ static  Knight wk01,wk02,bk01,bk02;
+	private /*@ spec_public nullable @*/ static  Bishop wb01,wb02,bb01,bb02;
+	private /*@ spec_public nullable @*/ static  Pawn wp[],bp[];
+	private /*@ spec_public nullable @*/ static  Queen wq,bq;
+	private /*@ spec_public nullable @*/ static  King wk,bk;
 	private /*@ spec_public nullable @*/ Cell c,previous;
 	private /*@ spec_public @*/ int chance=0;
 	private /*@ spec_public nullable @*/ Cell boardState[][];
@@ -72,7 +73,7 @@ public class Main extends JFrame implements MouseListener
 	private /*@ spec_public nullable @*/ BufferedImage image;
 	private /*@ spec_public nullable @*/ Button start,wselect,bselect,WNewPlayer,BNewPlayer;
 	public static int timeRemaining=60;
-	public static final /*@ non_null @*/ String caminho_diretorio = System.getProperty("user.dir") + "/src/chess/";
+	
 
 	
 	public static void main(String[] args){
