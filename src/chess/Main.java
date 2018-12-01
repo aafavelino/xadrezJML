@@ -99,8 +99,8 @@ public class Main extends JFrame implements MouseListener
 	bp=new Pawn[8];
 	for(int i=0;i<8;i++)
 	{
-		wp[i]=new Pawn("WP0"+(i+1),"White_Pawn.png",0);
-		bp[i]=new Pawn("BP0"+(i+1),"Black_Pawn.png",1);
+		wp[i]=new Pawn("WP0"+(i+1),caminho_diretorio+"White_Pawn.png",0);
+		bp[i]=new Pawn("BP0"+(i+1),caminho_diretorio+"Black_Pawn.png",1);
 	}
 	
 	//Setting up the board
