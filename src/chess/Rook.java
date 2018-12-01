@@ -10,7 +10,13 @@ import chess.Cell;
  */
 public class Rook extends Piece{
 	
+	// public invariant color >= 0;
+	//(\forall int i; possiblemoves[i] != null);
+	
 	//Constructor
+	/*@ requires  c >= 0;
+	 @  ensures i == id && p == path && c == color;
+	 @*/
 	public Rook(String i,String p,int c)
 	{
 		setId(i);

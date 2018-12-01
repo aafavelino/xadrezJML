@@ -12,24 +12,30 @@ import javax.swing.*;
  */
 public class Cell extends JPanel implements Cloneable{
 	
+	/* public invariant x >= 0 && x < 8 && y >= 0 && y < 8 @*/
+	
 	//Member Variables
-	private static final long serialVersionUID = 1L;
-	private boolean ispossibledestination;
+	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
+	private /*@ spec_public @*/ boolean ispossibledestination;
 	private  /*@ spec_public nullable @*/ JLabel content;
 	private  /*@ spec_public nullable @*/ Piece piece;
-	int x,y;                             //is public because this is to be accessed by all the other class
-	private boolean isSelected=false;
-	private boolean ischeck=false;
+	/*@ spec_public @*/ int x,y;                             //is public because this is to be accessed by all the other class
+	private /*@ spec_public @*/ boolean isSelected=false;
+	private /*@ spec_public @*/ boolean ischeck=false;
 	
 	//Constructors
-	public Cell(int x,int y, /*@ nullable @*/  Piece p)
+	/*@ requires  tx >= 0 && tx < 8 && ty >= 0 && ty < 8;
+	 @  assignable x, y;
+	 @  ensures tx == x && ty == y && p == piece;
+	 */
+	public Cell(int tx,int ty, /*@ nullable @*/  Piece p)
 	{		
-		this.x=x;
-		this.y=y;
+		this.x=tx;
+		this.y=ty;
 		
 		setLayout(new BorderLayout());
 	
-	 if((x+y)%2==0)
+	 if((tx+ty)%2==0)
 	  setBackground(new Color(113,198,113));
 	
 	 else
@@ -40,6 +46,10 @@ public class Cell extends JPanel implements Cloneable{
 	}
 	
 	//A constructor that takes a cell as argument and returns a new cell will the same data but different reference
+	/*@ requires cell != null;
+	 @  assignable x, y, piece;
+	 @  ensures cell.x == x && cell.y == y && (piece == null || piece == cell.piece);
+	 @*/
 	public Cell(Cell cell) throws CloneNotSupportedException
 	{
 		this.x=cell.x;
@@ -56,7 +66,11 @@ public class Cell extends JPanel implements Cloneable{
 		else
 			piece=null;
 	}
-	
+
+	/*@ requires  p != null;
+	 @  assignable piece;
+	 @  ensures p == piece;
+	 @*/
 	public void setPiece(Piece p)    //Function to inflate a cell with a piece
 	{
 		piece=p;
@@ -64,7 +78,10 @@ public class Cell extends JPanel implements Cloneable{
 		content=new JLabel(img);
 		this.add(content);
 	}
-	
+
+	/*@ assignable piece;
+	 @  ensures piece == null;
+	 @*/
 	public void removePiece()      //Function to remove a piece from the cell
 	{
 		if (piece instanceof King)
@@ -77,54 +94,80 @@ public class Cell extends JPanel implements Cloneable{
 			piece=null;
 			this.remove(content);
 		}
-	}
-	
-	
-	public Piece getpiece()    //Function to access piece of a particular cell
+	}	
+
+	//@  ensures \result == piece;
+	public /*@ pure @*/ Piece getpiece()    //Function to access piece of a particular cell
 	{
 		return this.piece;
 	}
-	
+
+	/*@ requires piece != null;
+	 @  assignable isSelected;
+	 @  ensures isSelected == true;
+	 @*/
 	public void select()       //Function to mark a cell indicating it's selection
 	{
 		this.setBorder(BorderFactory.createLineBorder(Color.red,6));
 		this.isSelected=true;
 	}
-	
-	public boolean isselected()   //Function to return if the cell is under selection
+
+	//@  ensures isSelected == \result;
+	public /*@ pure @*/  boolean isselected()   //Function to return if the cell is under selection
 	{
 		return this.isSelected;
 	}
 	
+	/*@ requires piece != null;
+	 @  assignable isSelected;
+	 @  ensures isSelected == false;
+	 @*/
 	public void deselect()      //Function to delselect the cell
 	{
 		this.setBorder(null);
 		this.isSelected=false;
 	}
 	
+	/*@ requires piece != null;
+	 @  assignable ispossibledestination;
+	 @  ensures ispossibledestination == true;
+	 @*/
 	public void setpossibledestination()     //Function to highlight a cell to indicate that it is a possible valid move
 	{
 		this.setBorder(BorderFactory.createLineBorder(Color.blue,4));
 		this.ispossibledestination=true;
 	}
 	
+	/*@ requires piece != null;
+	 @  assignable ispossibledestination;
+	 @  ensures ispossibledestination == false;
+	 @*/
 	public void removepossibledestination()      //Remove the cell from the list of possible moves
 	{
 		this.setBorder(null);
 		this.ispossibledestination=false;
 	}
-	
-	public boolean ispossibledestination()    //Function to check if the cell is a possible destination 
+
+	//@  ensures ispossibledestination == \result;
+	public /*@ pure @*/  boolean ispossibledestination()    //Function to check if the cell is a possible destination 
 	{
 		return this.ispossibledestination;
 	}
 	
+	/*@ requires piece != null;
+	 @  assignable ischeck;
+	 @  ensures ischeck == true;
+	 @*/
 	public void setcheck()     //Function to highlight the current cell as checked (For King)
 	{
 		this.setBackground(Color.RED);
 		this.ischeck=true;
 	}
 	
+	/*@ requires piece != null;
+	 @  assignable ischeck;
+	 @  ensures ischeck == false;
+	 @*/
 	public void removecheck()   //Function to deselect check
 	{
 		this.setBorder(null);
@@ -134,8 +177,9 @@ public class Cell extends JPanel implements Cloneable{
 			setBackground(Color.white);
 		this.ischeck=false;
 	}
-	
-	public boolean ischeck()    //Function to check if the current cell is in check
+
+	//@  ensures ischeck == \result;
+	public /*@ pure @*/  boolean ischeck()    //Function to check if the current cell is in check
 	{
 		return ischeck;
 	}

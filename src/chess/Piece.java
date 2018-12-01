@@ -18,45 +18,64 @@ public abstract class Piece implements Cloneable{
 	private /*@ spec_public nullable @*/ String id=null;
 	private /*@ spec_public nullable @*/ String path;
 	protected /*@ spec_public nullable @*/ ArrayList<Cell> possiblemoves = new ArrayList<Cell>();  //Protected (access from child classes)
-	public abstract ArrayList<Cell> move(Cell pos[][],int x,int y);  //Abstract Function. Must be overridden
+	public abstract ArrayList<Cell> move(Cell state[][],int x,int y);  //Abstract Function. Must be overridden
 	
 	//Id Setter
+	/*@ requires  id != null;
+	 @  assignable id;
+	 @  ensures \old(id) == id;
+	 @*/
 	public void setId(String id)
 	{
 		this.id=id;
 	}
 	
 	//Path Setter
+	/*@ requires  path != null;
+	 @  assignable path;
+	 @  ensures \old(path) == path;
+	 @*/
 	public void setPath(String path)
 	{
 		this.path=path;
 	}
 	
 	//Color Setter
+	/*@ requires  c >= 0;
+	 @  assignable c;
+	 @  ensures \old(c) == c;
+	 @*/
 	public void setColor(int c)
 	{
 		this.color=c;
 	}
 	
 	//Path getter
-	public String getPath()
+	public /*@ pure @*/ String getPath()
 	{
 		return path;
 	}
 	
 	//Id getter
-	public String getId()
+	public /*@ pure @*/ String getId()
 	{
 		return id;
 	}
 	
 	//Color Getter
-	public int getcolor()
+	public /*@ pure @*/ int getcolor()
 	{
 		return this.color;
 	}
 	
 	//Function to return the a "shallow" copy of the object. The copy has exact same variable value but different reference
+	/*@ requires  path != null;
+	 @  assignable path;
+	 @  ensures \result.color == color && 
+	 @   \result.id == id && 
+	 @   \result.path == path && 
+	 @   \result.possiblemoves == possiblemoves;
+	 @*/
 	public Piece getcopy() throws CloneNotSupportedException
 	{
 		return (Piece) this.clone();
