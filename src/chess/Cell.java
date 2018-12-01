@@ -166,7 +166,7 @@ public class Cell extends JPanel implements Cloneable{
 		this.ischeck=true;
 	}
 	
-	/*@ requires piece != null;
+	/*@ 
 	 @  assignable ischeck;
 	 @  ensures ischeck == false;
 	 @*/

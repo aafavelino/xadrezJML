@@ -10,7 +10,9 @@ import chess.Cell;
  */
 public class Pawn extends Piece{
 	
-	//COnstructors
+	//Constructor
+	/*@ requires  c >= 0; @*/
+	/*@ ensures i == id && p == path && c == color;@*/
 	public Pawn(String i,String p,int c)
 	{
 		setId(i);

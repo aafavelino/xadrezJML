@@ -12,6 +12,9 @@ import chess.Cell;
 public class Knight extends Piece{
 	
 	//Constructor
+	//Constructor
+	/*@ requires  c >= 0; @*/
+	/*@ ensures i == id && p == path && c == color;@*/
 	public Knight(String i,String p,int c)
 	{
 		setId(i);

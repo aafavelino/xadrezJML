@@ -11,6 +11,10 @@ import chess.Cell;
 public class Queen extends Piece{
 	
 	//Constructors
+	//Constructors
+	//Constructor
+	/*@ requires  c >= 0; @*/
+	/*@ ensures i == id && p == path && c == color;@*/
 	public Queen(String i,String p,int c)
 	{
 		setId(i);

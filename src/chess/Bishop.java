@@ -13,7 +13,10 @@ import chess.Cell;
  */
 public class Bishop extends Piece{
 	
+
 	//Constructor
+	/*@ requires  c >= 0; @*/
+	/*@ ensures i == id && p == path && c == color;@*/
 	public Bishop(String i,String p,int c)
 	{
 		setId(i);

@@ -9,6 +9,17 @@ public class King extends Piece{
 	private int x,y; //Extra variables for King class to keep a track of king's position
 	
 	//King Constructor
+	//Constructors
+	  /* @ requires i != null;
+	     @ requires p != null;
+	     @ requires c >= 0 && c < 2;
+	     @ requires x != null
+	     @ requires y != null
+	     @ ensures getx() == x 
+	     @ ensures gety() == y 
+	     @ ensures getId() == i
+	     @ ensures getPath() == p
+	     @ ensures getColor() == c @ */
 	public King(String i,String p,int c,int x,int y)
 	{
 		setx(x);
