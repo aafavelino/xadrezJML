@@ -21,6 +21,14 @@ public class Pawn extends Piece{
 	}
 	
 	//Move Function Overridden
+	/*
+	 @ also
+	 @ requires state != null;
+	 @ requires x >= 0 && x < 8;
+	 @ requires y >= 0 && y < 8;
+	 @ assignable possiblemoves;
+	 @ ensures (\forall int i; 0 <= i && i < this.getPossibleMovesSize(); possiblemoves.get(i).getpiece() == null || possiblemoves.get(i).getpiece().getcolor() != this.getcolor());
+	 */
 	public ArrayList<Cell> move(Cell state[][],int x,int y)
 	{
 		//Pawn can move only one step except the first chance when it may move 2 steps

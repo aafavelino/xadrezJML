@@ -23,6 +23,14 @@ public class Queen extends Piece{
 	}
 	
 	//Move Function Defined
+	/*
+	 @ also
+	 @ requires state != null;
+	 @ requires x >= 0 && x < 8;
+	 @ requires y >= 0 && y < 8;
+	 @ assignable possiblemoves;
+	 @ ensures (\forall int i; 0 <= i && i < this.getPossibleMovesSize(); possiblemoves.get(i).getpiece() == null || possiblemoves.get(i).getpiece().getcolor() != this.getcolor());
+	 */
 	public ArrayList<Cell> move(Cell state[][],int x,int y)
 	{
 		//Queen has most number of possible moves
