@@ -12,10 +12,11 @@ import javax.swing.*;
  */
 public class Cell extends JPanel implements Cloneable{
 	
-	/*public invariant x >= 0 && x < 8 && y >= 0 && y < 8 */
+/*@ public invariant x >= 0 && x < 8 && y >= 0 && y < 8; @*/
 	
 	//Member Variables
 	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
+	/*@ public constraint serialVersionUID == 1; @*/
 	private /*@ spec_public @*/ boolean ispossibledestination;
 	private  /*@ spec_public nullable @*/ JLabel content;
 	private  /*@ spec_public nullable @*/ Piece piece;
