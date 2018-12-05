@@ -110,6 +110,12 @@ public class Main extends JFrame implements MouseListener
 	}
 	
 	//Constructor
+	/*@ public initially timeRemaining == 60; 
+	  @ public initially move.equals("White");
+	  @ public initially 
+	  @		(\forall int i; i < 8; 
+	  @			(\forall int e; e < 8; boardState[i][e] != null));
+	  @*/
 	private Main()
     {
 		timeRemaining=60;
