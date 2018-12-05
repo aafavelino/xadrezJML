@@ -21,7 +21,8 @@ public abstract class Piece implements Cloneable{
 	public abstract ArrayList<Cell> move(Cell state[][],int x,int y);  //Abstract Function. Must be overridden
 	
 	//Id Setter
-	/*@ requires  id != null;
+	/*@ public initially id != null; 
+	 @  requires  id != null;
 	 @  assignable id;
 	 @  ensures \old(id) == id;
 	 @*/
@@ -32,9 +33,9 @@ public abstract class Piece implements Cloneable{
 	
 	//Path Setter
 	/*@ requires  path != null;
-	 @  assignable path;
-	 @  ensures \old(path) == path;
-	 @*/
+      @  assignable path;
+	  @  ensures \old(path) == path;
+	  @ */
 	public void setPath(String path)
 	{
 		this.path=path;
