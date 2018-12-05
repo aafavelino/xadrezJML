@@ -27,11 +27,18 @@ public class Player implements Serializable{
 	private /*@ spec_public nullable @*/ Integer gamesplayed;
 	private /*@ spec_public nullable @*/ Integer gameswon;
 	
+	
+	
 	//Constructor
+	/* @ requires name != null
+	   @ public initially this.name == name.trim();
+	   @ public initially gamesplayed.intValue() == 0;
+	   @ public initially gameswon.intValue() == 0; 
+	   @ */
 	public Player(String name)
 	{
 		this.name = name.trim();
-		//this.lname = lname.trim();
+//		this.lname = lname.trim();
 		gamesplayed = new Integer(0);
 		gameswon = new Integer(0);
 	}

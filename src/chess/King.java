@@ -19,7 +19,8 @@ public class King extends Piece{
 	     @ ensures gety() == y 
 	     @ ensures getId() == i
 	     @ ensures getPath() == p
-	     @ ensures getColor() == c @ */
+	     @ ensures getColor() == c 
+	     @ */
 	public King(String i,String p,int c,int x,int y)
 	{
 		setx(x);
