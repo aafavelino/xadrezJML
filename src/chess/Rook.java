@@ -14,8 +14,12 @@ public class Rook extends Piece{
 	//(\forall int i; possiblemoves[i] != null);
 	
 	//Constructor
-	/*@ requires  c >= 0; @*/
-	/*@ ensures i == id && p == path && c == color;@*/
+	/*@ requires  c >= 0; 
+	  @ requires p != null;
+	  @ requires i != null;
+	  @ ensures i == id;
+	  @ ensures p == path;
+	  @ ensures c == color;@*/
 	public Rook(String i,String p,int c)
 	{
 		setId(i);
