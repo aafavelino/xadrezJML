@@ -47,9 +47,17 @@ public class Cell extends JPanel implements Cloneable{
 	}
 	
 	//A constructor that takes a cell as argument and returns a new cell will the same data but different reference
-	/*@ requires cell != null;
+	/*@ public normal_behavior
+	 @ requires cell != null;
 	 @  assignable x, y, piece;
 	 @  ensures cell.x == x && cell.y == y && (piece == null || piece == cell.piece);
+	 @  also
+	 @ public exceptional_behavior 
+	 @ requires cell != null;
+	 @ assignable x, y, piece;
+	 @ signals_only CloneNotSupportedException;
+	 @ signals (CloneNotSupportedException e) 
+	 @ cell.x == x && cell.y == y && (piece == null || piece == cell.piece);
 	 @*/
 	public Cell(Cell cell) throws CloneNotSupportedException
 	{
