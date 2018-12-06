@@ -52,18 +52,21 @@ public abstract class Piece implements Cloneable{
 	}
 	
 	//Path getter
+	// @ ensures this.path == \result
 	public /*@ pure @*/ String getPath()
 	{
 		return path;
 	}
 	
 	//Id getter
+	// @ ensures this.id == \result	
 	public /*@ pure @*/ String getId()
 	{
 		return id;
 	}
 	
 	//Color Getter
+	// @ ensures this.color == \result
 	public /*@ pure @*/ int getcolor()
 	{
 		return this.color;

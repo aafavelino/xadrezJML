@@ -150,8 +150,11 @@ public class King extends Piece{
 				break;
 			else
 			{
-				if (state[tempx][tempy].getpiece() instanceof Bishop || state[tempx][tempy].getpiece() instanceof Queen)
-    				return true;
+				if (state[tempx][tempy].getpiece() instanceof Bishop || state[tempx][tempy].getpiece() instanceof Queen) {
+					// @ assert \return == true
+					return true;
+				}
+    				
     			else
     				break;
 			}

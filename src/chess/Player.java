@@ -68,12 +68,14 @@ public class Player implements Serializable{
 	}
 	
 	//Increments the number of games played
+	// @ ensures \old(gamesplayed++) == gamesplayed
 	public void updateGamesPlayed()
 	{
 		gamesplayed++;
 	}
 	
 	//Increments the number of games won
+	// @ ensures \old(gameswon++) == gameswon
 	public void updateGamesWon()
 	{
 		gameswon++;
