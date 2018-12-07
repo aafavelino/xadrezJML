@@ -291,6 +291,9 @@ public class Main extends JFrame implements MouseListener
 			private static final long serialVersionUID = 1L;
 			     
 			@Override
+			/*@	requires g != null;
+			 @	assignable image;
+			 @*/
 		    public void paintComponent(Graphics g) {
 				  try {
 			          image = ImageIO.read(new File(caminho_diretorio + "clash.jpg"));
@@ -312,6 +315,10 @@ public class Main extends JFrame implements MouseListener
 	
 	// A function to change the chance from White Player to Black Player or vice verse
 	// It is made public because it is to be accessed in the Time Class
+	/*@	requires chance == 0 || chance == 1;
+	 @	requires (\forall int i; i >= 0 && i < boardState.length; (\forall int e; e >= 0 && e < boardState[i].length; boardState[i][e] != null));
+	 @	ensures \old(chance) != chance;
+	 @*/
 	public void changechance()
 	{
 		if (boardState[getKing(chance).getx()][getKing(chance).gety()].ischeck())
@@ -340,7 +347,10 @@ public class Main extends JFrame implements MouseListener
 	}
 	
 	//A function to retrieve the Black King or White King
-	private King getKing(int color)
+	/*@ requires color >= 0;
+	 @	ensures \result == wk || \result == bk;
+	 @*/
+	private /*@ pure @*/ King getKing(int color)
 	{
 		if (color==0)
 			return wk;
@@ -349,6 +359,9 @@ public class Main extends JFrame implements MouseListener
 	}
 	
 	//A function to clean the highlights of possible destination cells
+	/*@ requires destlist != null;
+	 @	requires (\forall int i; i >= 0 && i < destlist.size(); destlist.get(i) != null);
+	 @*/
     private void cleandestinations(ArrayList<Cell> destlist)      //Function to clear the last move's destinations
     {
     	ListIterator<Cell> it = destlist.listIterator();
@@ -357,6 +370,10 @@ public class Main extends JFrame implements MouseListener
     }
     
     //A function that indicates the possible moves by highlighting the Cells
+    /*@	requires destlist != null;
+     @	requires (\forall int i; i >= 0 && i < destlist.size(); destlist.get(i) != null);
+     @	ensures	(\forall int i; i >= 0 &&  i < destlist.size(); ( (Cell) destlist.get(i)).ispossibledestination() ==  true);
+     @*/
     private void highlightdestinations(ArrayList<Cell> destlist)
     {
     	ListIterator<Cell> it = destlist.listIterator();
@@ -366,6 +383,11 @@ public class Main extends JFrame implements MouseListener
     
     
   //Function to check if the king will be in danger if the given move is made
+    /*@	requires fromcell != null;
+    @	requires tocell != null;
+    @	requires (\forall int i; i >= 0 && i < boardState.length; (\forall int e; e >= 0 && e < boardState[i].length; boardState[i][e] != null));
+    @	ensures ((King)(boardState[getKing(chance).getx()][getKing(chance).gety()].getpiece())).isindanger(boardState) == true ==> \result == true;
+    @*/
     private boolean willkingbeindanger(Cell fromcell,Cell tocell)
     {
     	Cell newboardstate[][] = new Cell[8][8];
@@ -390,6 +412,11 @@ public class Main extends JFrame implements MouseListener
     }
     
     //A function to eliminate the possible moves that will put the King in danger
+    /*@	requires destlist != null;
+     @	requires fromcell != null;
+     @	requires (\forall int i; i >= 0 && i < destlist.size(); destlist.get(i) != null);
+     @	ensures (\forall int i; 0 <= i && i < \result.size(); \result.get(i) != null);
+     @*/
     private ArrayList<Cell> filterdestination (ArrayList<Cell> destlist, Cell fromcell)
     {
     	ArrayList<Cell> newlist = new ArrayList<Cell>();
@@ -423,6 +450,13 @@ public class Main extends JFrame implements MouseListener
     }
     
     //A Function to filter the possible moves when the king of the current player is under Check 
+    /*@	requires destlist != null;
+     @	requires fromcell != null;
+     @ 	requires color == 0 || color == 1;
+     @	requires (\forall int i; i >= 0 && i < destlist.size(); destlist.get(i) != null);
+     @	ensures (\forall int i; 0 <= i && i < \result.size(); \result.get(i) != null);
+     @	ensures (\forall int i; 0 <= i && i < \result.size(); destlist.contains(\result.get(i)) == true);
+     @*/
     private ArrayList<Cell> incheckfilter (ArrayList<Cell> destlist, Cell fromcell, int color)
     {
     	ArrayList<Cell> newlist = new ArrayList<Cell>();
@@ -455,6 +489,9 @@ public class Main extends JFrame implements MouseListener
     }
     
     //A function to check if the King is check-mate. The Game Ends if this function returns true.
+    /*@ requires color == 0 || color == 1;
+     @	ensures \result == true || \result == false;
+     @*/
     public boolean checkmate(int color)
     {
     	ArrayList<Cell> dlist = new ArrayList<Cell>();
@@ -465,14 +502,32 @@ public class Main extends JFrame implements MouseListener
     			if (boardState[i][j].getpiece()!=null && boardState[i][j].getpiece().getcolor()==color)
     			{
     				dlist.clear();
-    				dlist=boardState[i][j].getpiece().move(boardState, i, j);
-    				dlist=incheckfilter(dlist,boardState[i][j],color);
-    				if(dlist.size()!=0)
+    				boolean ok = kingCantMove(dlist, i, j, color);
+    				if(!ok) {
     					return false;
+    				}
     			}
     		}
     	}
     	return true;
+    }
+    
+    /*@ requires dlist != null;
+     @	requires 0 <= i && i < 8;
+     @	requires 0 <= j && j < 8;
+     @	requires color == 0 || color == 1;
+     @ ensures dlist.size() != 0 ==> \result == false;
+     @ ensures dlist.size() == 0 ==> \result == true;
+     @*/
+    public boolean kingCantMove(ArrayList<Cell> dlist, int i, int j, int color) {
+		dlist=boardState[i][j].getpiece().move(boardState, i, j);
+		dlist=incheckfilter(dlist,boardState[i][j],color);
+		if(dlist.size()!=0){
+			return false;
+		}
+		else {
+			return true;
+		}
     }
 	
     
