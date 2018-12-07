@@ -30,10 +30,13 @@ import java.util.ListIterator;
 
 public class Main extends JFrame implements MouseListener
 {
-	private static final long serialVersionUID = 1L;
+	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
+	/*@ public constraint serialVersionUID == 1; @*/
 	
 	//Variable Declaration
 	public /*@ non_null @*/static final  String caminho_diretorio = System.getProperty("user.dir") + "/src/chess/";
+	/*@ public constraint caminho_diretorio.equals(System.getProperty("user.dir") + "/src/chess/"); @*/
+	
 	private static final int Height=700;
 	private static final int Width=1110;
 	private /*@ spec_public nullable @*/ static  Rook wr01,wr02,br01,br02;
@@ -73,6 +76,7 @@ public class Main extends JFrame implements MouseListener
 	private /*@ spec_public nullable @*/ BufferedImage image;
 	private /*@ spec_public nullable @*/ Button start,wselect,bselect,WNewPlayer,BNewPlayer;
 	public static int timeRemaining=60;
+	/*@ public constraint (timeRemaining % 60 == 0); @*/
 	
 
 	
