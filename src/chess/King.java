@@ -76,7 +76,7 @@ public class King extends Piece{
 	
 	//Function to check if king is under threat
 	//It checks whether there is any piece of opposite color that can attack king for a given board state
-	public boolean isindanger(Cell state[][])
+	public /*@pure@*/ boolean isindanger(Cell state[][])
     {
 		
 		//Checking for attack from left,right,up and down
