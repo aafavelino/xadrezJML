@@ -119,6 +119,31 @@ public class Main extends JFrame implements MouseListener
 	  @ public initially 
 	  @		(\forall int i; i < 8; 
 	  @			(\forall int e; e < 8; boardState[i][e] != null));
+	  @ requires wr01 != null && wr02 != null && br01 != null && br02 != null;
+	  @ requires wk01 != null && wk02 != null && bk01 != null && bk02 != null;
+	  @ requires wb01  != null && wb02  != null && bb01  != null && bb02  != null;
+	  @ requires (\forall int i; i >= 0 && i < wp.length; wp[i] != null );
+	  @ requires (\forall int i; i >= 0 && i < bp.length; bp[i] != null );
+	  @ requires wq != null && bq != null;
+	  @ requires wk != null && bk != null;
+	  @ ensures (\forall int i; 0 <= i && i < 8; boardState[1][i].getpiece() == bp[i]);
+	  @ ensures (\forall int i; 0 <= i && i < 8; boardState[6][i].getpiece() == wp[i]);
+	  @ ensures boardState[0][0].getpiece() == br01;
+	  @ ensures boardState[7][1].getpiece() == wk01; 
+	  @ ensures boardState[0][1].getpiece() == bk01;
+	  @ ensures boardState[7][2].getpiece() == wb01;
+	  @ ensures boardState[7][0].getpiece() == wr01; 
+	  @ ensures boardState[0][2].getpiece() == bb01;
+	  @ ensures boardState[7][4].getpiece() == wq;
+	  @ ensures boardState[0][4].getpiece() == bq;
+	  @ ensures boardState[0][3].getpiece() == bk;
+	  @ ensures boardState[7][3].getpiece() == wk;
+	  @ ensures boardState[0][5].getpiece() == bb02;
+	  @ ensures boardState[7][7].getpiece() == wr02;
+	  @ ensures boardState[7][5].getpiece() == wb02;
+	  @ ensures boardState[0][6].getpiece() == bk02;
+	  @ ensures boardState[7][6].getpiece() == wk02;
+      @ ensures boardState[0][7].getpiece() == br02;  
 	  @*/
 	private Main()
     {
