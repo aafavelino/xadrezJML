@@ -6,20 +6,20 @@ import chess.Cell;
 
 public class King extends Piece{
 	
-	private int x,y; //Extra variables for King class to keep a track of king's position
+	private /*@ spec_public @*/int x,y; //Extra variables for King class to keep a track of king's position
 	
 	//King Constructor
 	//Constructors
 	  /* @ requires i != null;
 	     @ requires p != null;
 	     @ requires c >= 0 && c < 2;
-	     @ requires x != null
-	     @ requires y != null
-	     @ ensures getx() == x 
-	     @ ensures gety() == y 
-	     @ ensures getId() == i
-	     @ ensures getPath() == p
-	     @ ensures getColor() == c 
+	     @ requires x != null;
+	     @ requires y != null;
+	     @ ensures getId() == i;
+	     @ ensures getPath() == p;
+	     @ ensures getColor() == c; 
+	     @ ensures getx() == x ;
+	     @ ensures gety() == y;
 	     @ */
 	public King(String i,String p,int c,int x,int y)
 	{
@@ -31,18 +31,32 @@ public class King extends Piece{
 	}
 	
 	//general value access functions
+	/*@ 
+	@ assignable x;
+ 	@ ensures this.x == x;
+ 	@*/
 	public void setx(int x)
 	{
 		this.x=x;
 	}
+	/*@ 
+	@ assignable y;
+ 	@ ensures this.y == y;
+ 	@*/	
 	public void sety(int y)
 	{
 		this.y=y;
 	}
+	/*@
+ 	@ ensures \result == this.x;
+ 	@*/	
 	public /*@ pure @*/ int getx()
 	{
 		return x;
 	}
+	/*@
+ 	@ ensures \result == this.y;
+ 	@*/	
 	public /*@ pure @*/ int gety()
 	{
 		return y;

@@ -58,7 +58,7 @@ public class Main extends JFrame implements MouseListener
 	private /*@ spec_public nullable @*/ JPanel controlPanel,WhitePlayer,BlackPlayer,temp,displayTime,showPlayer,time;
 	private /*@ spec_public nullable @*/ JSplitPane split;
 	private /*@ spec_public nullable @*/ JLabel label,mov;
-	private static /*@ spec_public nullable @*/ JLabel CHNC;
+	private /*@ spec_public nullable @*/ static  JLabel CHNC;
 	private /*@ spec_public nullable @*/ Time timer;
 	public /*@ nullable @*/ static Main Mainboard;
 	private /*@ spec_public @*/ boolean selected=false,end=false;
