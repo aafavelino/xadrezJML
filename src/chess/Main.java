@@ -35,7 +35,7 @@ public class Main extends JFrame implements MouseListener
 	
 	//Variable Declaration
 	public /*@ non_null @*/static final  String caminho_diretorio = System.getProperty("user.dir") + "/src/chess/";
-	/*@ public constraint caminho_diretorio.equals(System.getProperty("user.dir") + "/src/chess/"); @*/
+	
 	
 	private static final int Height=700;
 	private static final int Width=1110;
