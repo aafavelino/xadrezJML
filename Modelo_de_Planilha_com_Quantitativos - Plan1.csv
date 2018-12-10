@@ -1,0 +1,17 @@
+ITEM,QUANTIDADE
+Número de Classes Total,12
+Número de Classes Anotadas,12
+Linhas de Código das Classes Anotadas,203M e +/- 392 T
+Quantidade de Métodos Anotados,43
+Herança e Interface,6
+invariant,2
+initially,7
+constraint,4
+assignable,24
+requires,78
+ensures,73
+normal_behaviour e exceptional_behaviour,2
+\forall,26
+\exists,0
+Modelos (represents),0
+behaviour subtyping,0
