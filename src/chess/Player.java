@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 public class Player implements Serializable{
 	
 	private /*@ spec_public @*/ static final long serialVersionUID = 1L;
+	/*@ public constraint serialVersionUID == 1L; @*/
 	private /*@ spec_public nullable @*/ String name;
 	private /*@ spec_public nullable @*/ Integer gamesplayed;
 	private /*@ spec_public nullable @*/ Integer gameswon;

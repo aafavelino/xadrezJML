@@ -14,6 +14,8 @@ public class Knight extends Piece{
 	//Constructor
 	//Constructor
 	/*@ requires  c >= 0; @*/
+	/*@ requires  i != null; @*/
+	/*@ requires  p != null; @*/
 	/*@ ensures i == id && p == path && c == color;@*/
 	public Knight(String i,String p,int c)
 	{

@@ -13,6 +13,9 @@ import chess.Cell;
  */
 public abstract class Piece implements Cloneable{
 
+	// public invariant color >= 0;
+	// public invariant (\forall int i; 0 <= i && i < possiblemoves.size(); possiblemoves.get(i) != null);
+	
 	//Member Variables
 	private /*@ spec_public @*/ int color;
 	private /*@ spec_public nullable @*/ String id=null;

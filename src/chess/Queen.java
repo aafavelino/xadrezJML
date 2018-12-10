@@ -14,6 +14,8 @@ public class Queen extends Piece{
 	//Constructors
 	//Constructor
 	/*@ requires  c >= 0; @*/
+	/*@ requires  i != null; @*/
+	/*@ requires  p != null; @*/
 	/*@ ensures i == id && p == path && c == color;@*/
 	public Queen(String i,String p,int c)
 	{

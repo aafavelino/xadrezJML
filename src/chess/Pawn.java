@@ -12,6 +12,8 @@ public class Pawn extends Piece{
 	
 	//Constructor
 	/*@ requires  c >= 0; @*/
+	/*@ requires  i != null; @*/
+	/*@ requires  p != null; @*/
 	/*@ ensures i == id && p == path && c == color;@*/
 	public Pawn(String i,String p,int c)
 	{
